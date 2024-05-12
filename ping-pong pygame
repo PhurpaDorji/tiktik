@@ -105,6 +105,18 @@ def main():
         game.handle_events()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            game.paddle.move("left")
-        if keys[pygame.K_RIGHT]: 
-            
+            game.paddle.move("left") 
+            if keys[pygame.K_RIGHT]: 
+              game.paddle.move("right")
+        game.update()
+        game.draw()
+        game.clock.tick(60)
+    while True:  # Keep the game over screen until player closes the window
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+
+if __name__ == "__main__":
+    main()
+
